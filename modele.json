@@ -1,0 +1,39 @@
+{
+    "_id": "660b1a9e8f1b2a001c8a9e9f",
+    "titre": "Finir le modèle",
+    "description": "Rédiger le json et le mettre sur le dépot git",
+    "dateCreation": "2025-03-24T12:00:00.000Z",
+    "echeance": "2025-03-31T23:59:59.999Z",
+    "statut": "en cours",
+    "priorite": "haute",
+    "auteur": {
+      "nom": "Scordia",
+      "prenom": "Guillaume",
+      "email": "GS@example.com"
+    },
+    "categorie": "Développement",
+    "etiquettes": ["MongoDB", "JSON"],
+    "sousTaches": [
+      {
+        "titre": "Rédiger le JSON",
+        "statut": "terminée"
+      },
+      {
+        "titre": "Déposer sur le git",
+        "statut": "en cours"
+      }
+    ],
+    "commentaires": [
+      {
+        "auteur": "Billy",
+        "message": "Ne pas faire d'erreur sur les dates",
+        "date": "2024-03-31T10:30:00.000Z"
+      },
+      {
+        "auteur": "Bob",
+        "message": "Il n'est toujours pas déposé",
+        "date": "2024-04-01T15:00:00.000Z"
+      }
+    ]
+  }
+  
