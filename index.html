@@ -7,6 +7,40 @@
 </head>
 <body>
     <h1>Gestionnaire de tâches</h1>
+    <div>
+        <label for="filterStatus">Statut :</label>
+        <select id="filterStatus">
+            <option value="">Tous</option>
+            <option value="à faire">À faire</option>
+            <option value="en cours">En cours</option>
+            <option value="terminée">Terminée</option>
+            <option value="annulée">Annulée</option>
+        </select>
+
+        <label for="filterPriority">Priorité :</label>
+        <select id="filterPriority">
+            <option value="">Toutes</option>
+            <option value="basse">Basse</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="haute">Haute</option>
+            <option value="critique">Critique</option>
+        </select>
+
+        <label for="sortBy">Trier par :</label>
+        <select id="sortBy">
+            <option value="dateCreation">Date de création</option>
+            <option value="echeance">Échéance</option>
+            <option value="priorite">Priorité</option>
+        </select>
+
+        <label for="order">Ordre :</label>
+        <select id="order">
+            <option value="desc">Descendant</option>
+            <option value="asc">Ascendant</option>
+        </select>
+
+        <button onclick="fetchTasks()">Filtrer</button>
+    </div>
     <h2>Ajouter une nouvelle tâche</h2>
     <form id="taskForm">
         <input id="taskTitre" placeholder="Titre de la tâche" required>

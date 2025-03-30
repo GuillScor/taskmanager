@@ -1,7 +1,17 @@
 document.addEventListener("DOMContentLoaded", fetchTasks);
 
 function fetchTasks() {
-    fetch("http://localhost:5000/tasks")
+    let status = document.getElementById("filterStatus").value;
+    let priority = document.getElementById("filterPriority").value;
+    let sortBy = document.getElementById("sortBy").value;
+    let order = document.getElementById("order").value;
+
+    let url = "http://localhost:5000/tasks?";
+    if (status) url += `statut=${status}&`;
+    if (priority) url += `priorite=${priority}&`;
+    url += `sortBy=${sortBy}&order=${order}`;
+
+    fetch(url)
     .then(res => res.json())
     .then(tasks => {
         document.getElementById("taskList").innerHTML = tasks.map(task => 
@@ -15,6 +25,21 @@ function fetchTasks() {
                 
                 <button onclick="editTask('${task._id}', '${task.titre}', '${task.description}', '${task.echeance}', '${task.statut}', '${task.priorite}')">Modifier</button>
                 <button onclick="deleteTask('${task._id}')">X</button>
+
+                <div>
+                    <input id="commentText-${task._id}" placeholder="Ajouter un commentaire">
+                    <input id="commentAuthor-${task._id}" placeholder="Auteur">
+                    <button onclick="addComment('${task._id}')">Commenter</button>
+                </div>
+
+                <ul id="commentList-${task._id}">
+                    ${task.commentaires.map(comment => 
+                        `<li>
+                            ${comment.contenu} - <i>${comment.auteur}</i>
+                            <button onclick="deleteComment('${task._id}', '${comment._id}')">Supprimer</button>
+                        </li>`
+                    ).join("")}
+                </ul>
             </li>`
         ).join("");
     });
@@ -88,4 +113,21 @@ function saveTask() {
 
 function cancelEdit() {
     document.getElementById("editSection").style.display = "none";
+}
+
+function addComment(taskId) {
+    let contenu = document.getElementById(`commentText-${taskId}`).value;
+    let auteur = document.getElementById(`commentAuthor-${taskId}`).value;
+
+    fetch(`http://localhost:5000/tasks/${taskId}/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ auteur, contenu })
+    }).then(fetchTasks);
+}
+
+function deleteComment(taskId, commentId) {
+    fetch(`http://localhost:5000/tasks/${taskId}/comments/${commentId}`, {
+        method: "DELETE"
+    }).then(fetchTasks);
 }
