@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionnaire de tâches</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Gestionnaire de tâches</h1>
+    <h2>Ajouter une nouvelle tâche</h2>
+    <form id="taskForm">
+        <input id="taskTitre" placeholder="Titre de la tâche" required>
+        <textarea id="taskDescription" placeholder="Description"></textarea>
+        <input type="date" id="taskEcheance">
+        
+        <select id="taskStatut">
+            <option value="à faire">À faire</option>
+            <option value="en cours">En cours</option>
+            <option value="terminée">Terminée</option>
+            <option value="annulée">Annulée</option>
+        </select>
+
+        <select id="taskPriorite">
+            <option value="basse">Basse</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="haute">Haute</option>
+            <option value="critique">Critique</option>
+        </select>
+
+        <input id="taskAuteurNom" placeholder="Nom de l'auteur">
+        <input id="taskAuteurPrenom" placeholder="Prénom de l'auteur">
+        <input id="taskAuteurEmail" type="email" placeholder="Email de l'auteur">
+
+        <input id="taskCategorie" placeholder="Catégorie">
+        <input id="taskEtiquettes" placeholder="Étiquettes (séparées par des virgules)">
+
+        <button type="button" onclick="addTask()">Ajouter</button>
+    </form>
+
+
+    <ul id="taskList"></ul>
+
+
+    <div id="editSection" style="display:none; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+        <input type="hidden" id="editId">
+        <h2>Modifier la tâche</h2>
+        <label for="editTitre">Titre :</label>
+        <input id="editTitre" type="text" placeholder="Titre"><br>
+
+        <label for="editDescription">Description :</label>
+        <textarea id="editDescription" placeholder="Description"></textarea><br>
+
+        <label for="editEcheance">Échéance :</label>
+        <input id="editEcheance" type="date"><br>
+
+        <label for="editStatut">Statut :</label>
+        <select id="editStatut">
+            <option value="à faire">À faire</option>
+            <option value="en cours">En cours</option>
+            <option value="terminée">Terminée</option>
+            <option value="annulée">Annulée</option>
+        </select><br>
+
+        <label for="editPriorite">Priorité :</label>
+        <select id="editPriorite">
+            <option value="basse">Basse</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="haute">Haute</option>
+            <option value="critique">Critique</option>
+        </select><br>
+
+        <button onclick="saveTask()">Enregistrer</button>
+        <button onclick="cancelEdit()">Annuler</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
