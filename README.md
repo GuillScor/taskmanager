@@ -68,7 +68,7 @@ Ouvrez `index.html` dans un navigateur.
   ```
 
 
-### 📌 Commentaires
+### Commentaires
 - **Ajouter un commentaire**
   ```http
   POST /tasks/:id/comments
